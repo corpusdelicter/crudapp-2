@@ -30,6 +30,6 @@ jobs:
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
-        app-name: crudapp1
+        app-name: crudapp-2
         slot-name: production
         images: ${{ secrets.REGISTRY_USERNAME }}/crudapp-2:${{ github.sha }}
