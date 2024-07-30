@@ -1,0 +1,35 @@
+name: Build, Push, and Deploy to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Log in to Docker Hub
+      run: echo ${{ secrets.REGISTRY_PASSWORD }} | docker login -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+
+    - name: Build the Docker image
+      run: docker build -t ${{ secrets.REGISTRY_USERNAME }}/crudapp-2:${{ github.sha }} .
+
+    - name: Push the Docker image to Docker Hub
+      run: docker push ${{ secrets.REGISTRY_USERNAME }}/crudapp-2:${{ github.sha }}
+
+    - name: Log in to Azure CLI
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy to Azure App Service
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: crudapp1
+        slot-name: production
+        images: ${{ secrets.REGISTRY_USERNAME }}/crudapp-2:${{ github.sha }}
