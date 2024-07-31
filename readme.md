@@ -30,4 +30,23 @@ b. Azure SQL Database:
 	-Click "Review + create" and then "Create".
 	-Configure Firewall Rule: allow appservice ip to connect database
 
+2. Application:
+	 This Web application build by Node.js and support CRUD and it's containeraized. please check this url : https://crudapp-2.azurewebsites.net/
 
+3. Security:
+   -To control inbound/outbond traffic to Database, I already configured firewall to allow appservice to access this Database.
+	 -Go to Azure Mysql Server --> Settings --> Networking --> Firewall Rule --> fill the appservice ip
+
+4. CI/CD:
+   -To configure Github Action:
+	  Configure Github Action:
+  		-Go to Github Repositories --> settings --> Secret and variables
+  		-add and fill this variable:
+  				-Azure_Credentials:
+  	 			 Run this command to get azure credentials:
+  	 				az ad sp create-for-rbac --name "yourapp" --role contributor --scopes /subscriptions/subscriptionID/resourceGroups/resourcegroupID --sdk-auth
+  		-Azure_Webapp_name
+  		-Registry_Username
+  		-Regirstry_Password
+  		-add folder .github/workflows
+  		-add file deploy-to-azure.yml Please check this url : https://github.com/corpusdelicter/crudapp-2/blob/main/.github/workflows/deploy-to-azure.yml
