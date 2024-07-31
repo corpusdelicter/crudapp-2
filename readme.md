@@ -45,29 +45,29 @@ b. Azure SQL Database:
 ```
 
 ## application
-2. Application:
-	 -This Web application build by Node.js and support CRUD and it's containeraized.<br/>
-	 -please check this url : https://crudapp-2.azurewebsites.net/
+2. Application:<br/>
+-This Web application build by Node.js and support CRUD and it's containeraized.<br/>
+-please check this url : https://crudapp-2.azurewebsites.net/
 
 ## security
-3. Security:
+3. Security:<br/>
 -To control inbound/outbond traffic to Database, I already configured firewall to allow appservice to access this Database.<br/>
-```-Go to Azure Mysql Server --> Settings --> Networking --> Firewall Rule --> fill the appservice ip
-```
+-Go to Azure Mysql Server --> Settings --> Networking --> Firewall Rule --> fill the appservice ip
 ## ci/cd
-4. CI/CD:
+4. CI/CD:<br/>
 -Configure Github Action:
 ```
 -Go to Github Repositories --> settings --> Secret and variables
 -add and fill this variable:
--Azure_Credentials:
- 		Run this command to get azure credentials:
- 		```az ad sp create-for-rbac --name "yourapp" --role contributor --scopes /subscriptions/subscriptionID/resourceGroups/resourcegroupID --sdk-auth```
+-Azure_Credentials
 -Azure_Webapp_name
 -Registry_Username
 -Regirstry_Password
 -add folder .github/workflows
 -add file deploy-to-azure.yml Please check this url : https://github.com/corpusdelicter/crudapp-2/blob/main/.github/workflows/deploy-to-azure.yml
+
+-to get Azure_Credentials please run this command :
+ az ad sp create-for-rbac --name "yourapp" --role contributor --scopes /subscriptions/subscriptionID/resourceGroups/resourcegroupID --sdk-auth
 ```
 ## contact
 if you have any feedback/concern please kindly send email to: umbudata@gmail.com
