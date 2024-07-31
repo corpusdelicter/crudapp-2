@@ -1,5 +1,6 @@
 # Project Title
 CRUD Web Application with Node.js - CI/CD with GitHub Actions
+https://crudapp-2.azurewebsites.net/
 
 ## Description
 This repository contains a web application developed using Node.js and deployed on Azure App Service, which supports CRUD operations with a Azuere MySQL database. The project leverages Azure App Service for hosting and managing the application. Additionally, it integrates GitHub Actions for Continuous Integration and Continuous Deployment (CI/CD), automating the build, test, and deployment processes.
@@ -21,6 +22,7 @@ Programming Language : Node.js
 
 ## infrastucturesetup
 1. Infrastructure Setup
+```
 		a. Azure App Service:
 			-Sign in to Azure Portal
 			-Create an App Service
@@ -41,6 +43,7 @@ Programming Language : Node.js
 			-Location: East US.
 			-Click "Review + create" and then "Create".
 			-Configure Firewall Rule: allow appservice ip to connect database
+```
 
 ## application
 2. Application:
@@ -49,23 +52,25 @@ Programming Language : Node.js
 
 ## security
 3. Security:
+```
    -To control inbound/outbond traffic to Database, I already configured firewall to allow appservice to access this Database.
 	 -Go to Azure Mysql Server --> Settings --> Networking --> Firewall Rule --> fill the appservice ip
-
+```
 ## cicd
 4. CI/CD:
+```
    -To configure Github Action:
 	  Configure Github Action:
   		-Go to Github Repositories --> settings --> Secret and variables
   		-add and fill this variable:
   				-Azure_Credentials:
   	 			 Run this command to get azure credentials:
-  	 				az ad sp create-for-rbac --name "yourapp" --role contributor --scopes /subscriptions/subscriptionID/resourceGroups/resourcegroupID --sdk-auth
+  	 				```az ad sp create-for-rbac --name "yourapp" --role contributor --scopes /subscriptions/subscriptionID/resourceGroups/resourcegroupID --sdk-auth```
   		-Azure_Webapp_name
   		-Registry_Username
   		-Regirstry_Password
   		-add folder .github/workflows
   		-add file deploy-to-azure.yml Please check this url : https://github.com/corpusdelicter/crudapp-2/blob/main/.github/workflows/deploy-to-azure.yml
-
+```
 ## contact
 if you have any feedback/concern please kindly send email to: umbudata@gmail.com
