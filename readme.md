@@ -46,13 +46,13 @@ b. Azure SQL Database:
 
 ## application
 2. Application:
-	 -This Web application build by Node.js and support CRUD and it's containeraized.
+	 -This Web application build by Node.js and support CRUD and it's containeraized.<br/>
 	 -please check this url : https://crudapp-2.azurewebsites.net/
 
 ## security
 3. Security:
--To control inbound/outbond traffic to Database, I already configured firewall to allow appservice to access this Database.
-``-Go to Azure Mysql Server --> Settings --> Networking --> Firewall Rule --> fill the appservice ip
+-To control inbound/outbond traffic to Database, I already configured firewall to allow appservice to access this Database.<br/>
+```-Go to Azure Mysql Server --> Settings --> Networking --> Firewall Rule --> fill the appservice ip
 ```
 ## ci/cd
 4. CI/CD:
